@@ -1,29 +1,31 @@
 import React, { useState } from 'react';
-export const SettingContext = React.createContext();
+import { useEffect } from 'react';
+export const SettingsContext = React.createContext();
 
 export default function SettingProvider(props) {
   const [hideComplete, setHideComplete] = useState(true);
   const [itemsPerPage, setItemPerPage] = useState(3);
   // const [sortField, setSortField] = useState('difficulty');
-
+  useEffect(() => {
+    return () => {
+      const items = localStorage.getItem('ItemPerPage');
+      if (items) {
+        setItemPerPage(items);
+      }
+    };
+  }, []);
   const state = {
     itemsPerPage,
     hideComplete,
     setHideComplete,
     setItemPerPage,
-
+    // sortField,
+    // setSortField,
   };
 
   return (
-
-    <SettingContext.Provider value={state}>
-
+    <SettingsContext.Provider value={state}>
       {props.children}
-
-    </SettingContext.Provider>
-
+    </SettingsContext.Provider>
   );
-
 }
-
-

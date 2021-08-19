@@ -3,7 +3,8 @@ import useForm from '../../hooks/form.js';
 import Header from './header';
 import { v4 as uuid } from 'uuid';
 import List from './list.js';
-import Form from './form';
+import ToDoForm from './form';
+import SettingForm from './settingForm.js';
 
 
 const ToDo = () => {
@@ -46,7 +47,8 @@ const ToDo = () => {
   return (
     <>
      <Header incomplete={incomplete}/>
-      <Form handleChange={handleChange} handleSubmit={handleSubmit}/>
+     <SettingForm />
+      <ToDoForm handleChange={handleChange} handleSubmit={handleSubmit}/>
 
      <List list={list} toggleComplete={toggleComplete} />
 
