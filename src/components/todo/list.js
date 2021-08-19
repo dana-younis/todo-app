@@ -1,13 +1,11 @@
 import React from 'react';
 import { useContext } from 'react';
-import { SettingContext } from '../../context/setting';
+import { SettingsContext } from '../../context/setting';
 import { useState, useEffect } from 'react';
-import { Button, Card } from '@blueprintjs/core';
+import { Button, Card, Elevation } from '@blueprintjs/core';
 
 function List(props) {
-   
-  const context = useContext(SettingContext);
-  
+  const context = useContext(SettingsContext);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [activeList, setActiveList] = useState(
@@ -17,22 +15,38 @@ function List(props) {
     Math.ceil(props.list.length / context.itemsPerPage)
   );
 
+  //============sorting==================\\
+  // if (context.sortField === 'assignee') {
+  //   activeList.sort((a, b) => {
+  //     if (a.assignee.toLowerCase() > b.assignee.toLowerCase()) return 1;
+  //     if (a.assignee.toLowerCase() < b.assignee.toLowerCase()) return -1;
+  //     return 0;
+  //   });
+  // }
+  // else if (context.sortField === 'difficulty') {
+  //   activeList.sort((a, b) => {
+  //     return a.difficulty - b.difficulty;
+  //   });
+  // }
+  // else if (context.sortField === 'task') {
+  //   activeList.sort((a, b) => {
+  //     if (a.text.toLowerCase() > b.text.toLowerCase()) return 1;
+  //     if (a.text.toLowerCase() < b.text.toLowerCase()) return -1;
+  //     return 0;
+  //   });
+  // }
+
   useEffect(() => {
-    // setCurrentPage(props.list.slice(0, context.itemsPerPage));
+    setActiveList(props.list.slice(0, context.itemsPerPage));
     setNumOfPages(Math.ceil(props.list.length / context.itemsPerPage));
-  }, [props.list,context.itemsPerPage]);
+  }, [props.list, context.itemsPerPage]);
 
   useEffect(() => {
     const start = (currentPage - 1) * context.itemsPerPage;
     const end = start + context.itemsPerPage;
     setActiveList(props.list.slice(start, end));
-  }, [currentPage,context.itemsPerPage,props.list]);
+  }, [currentPage, context.itemsPerPage, props.list]);
 
-
-//   if (context.hideComplete) {
-   
-//     activeList.props= props.list.filter(item => !item.complete);
-//   }
   const PagesList = () => {
     const pages = [];
     if (currentPage > 1)
@@ -71,6 +85,18 @@ function List(props) {
       );
     return pages;
   };
+
+  ///////////////////////////show
+  if (context.hideComplete) {
+    useEffect(() => {
+      setActiveList(props.list.filter((items) => !items.complete));
+    }, [props.list]);
+  }
+
+
+
+  
+
   const changePage = (pageNumber) => {
     if (pageNumber == currentPage) return;
     setCurrentPage(pageNumber);
@@ -78,13 +104,21 @@ function List(props) {
 
   return (
     <>
-     {/* <Button
-           
-            variant={context.hideComplete === true ? 'success' : 'secondary'}
-            onClick={() => context.setHideComplete(!context.hideComplete)}>
-              {context.hideComplete === true ? `Show Completed Tasks` : `Hide Completed Tasks`}
-          </Button>
-   */}
+      <Button onClick={() => context.setHideComplete(!context.hideComplete)}>
+        {context.hideComplete === true
+          ? `Show Completed Tasks`
+          : `Hide Completed Tasks`}
+      </Button>
+
+      {/* <div >
+            <label  htmlFor="sortby">Sort By:</label>
+            <select " name="sortby" onChange={e => context.setSortField(e.target.value)}>
+              <option value="assignee">Assignee</option>
+              <option value="difficulty">Difficulty</option>
+              <option value="task">Task</option>
+            </select>
+          </div> */}
+
       {activeList.map((item) => (
         <Card key={item.id}>
           <p>{item.text}</p>
