@@ -10,7 +10,7 @@ import useHook from '../hooks/formHooks.js';
 import { FormControl } from 'react-bootstrap';
 import { SettingsContext } from '../context/setting.js';
 import Pagination from './pagination.js';
- import SettingForm from './settingForm.js';
+
 
 
 function ToDoList(props) {
@@ -49,7 +49,31 @@ function ToDoList(props) {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+function SettingForm() {
+  const context = useContext(SettingsContext);
+  const [items, setItems] = useState(context.itemsPerPage);
 
+  const handleItems = (e) => {
+    e.preventDefault();
+
+    context.setItemPerPage(Number(e.target.items.value));
+    localStorage.setItem("ItemPerPage" , Number(e.target.items.value))
+  };
+  return (
+    <div>
+      <form onSubmit={handleItems}   >
+        <input
+          name="items"
+          onChange={(e) => {
+            setItems(e.target.value);
+          }}
+          value={items}
+        ></input>
+        <button type="submit">Items Displayed Per Page(number):</button>
+      </form>
+    </div>
+  );
+}
   return (
     <>
       <div id="listGroup">
