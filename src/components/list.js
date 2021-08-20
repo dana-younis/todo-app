@@ -10,7 +10,7 @@ import useHook from '../hooks/formHooks.js';
 import { FormControl } from 'react-bootstrap';
 import { SettingsContext } from '../context/setting.js';
 import Pagination from './pagination.js';
-
+ import SettingForm from './settingForm.js';
 
 
 function ToDoList(props) {
@@ -111,7 +111,7 @@ function ToDoList(props) {
           <Pagination itemsPerPage={settingsContext.itemsPerPage} totalItems={props.list.length} paginate={paginate}/>
           <p id="totalDisplay">{props.list.length} total items</p>
           <div id="selectPerPage">
-            <label id="perPagelabel" htmlFor="perPage">Items Displayed Per Page:</label>
+            <label id="perPagelabel" htmlFor="perPage">Items Displayed Per Page(select):</label>
             <select id="perPageSelect" name="perPage" onChange={e => settingsContext.setItemPerPage(e.target.value)}>
               <option value="3">3</option>
               <option value="4">4</option>
@@ -120,9 +120,10 @@ function ToDoList(props) {
             </select>
           </div>
         </div>
+             <SettingForm /> 
       </div>
     </>
-  );
+   );
 }
 
 export default ToDoList;
