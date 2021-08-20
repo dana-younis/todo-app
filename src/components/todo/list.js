@@ -88,7 +88,8 @@ function List(props) {
 
   ///////////////////////////show
   if (context.hideComplete) {
-    useEffect(() => {
+    useEffect((e) => {
+  
       setActiveList(props.list.filter((items) => !items.complete));
     }, [props.list]);
   }
@@ -126,7 +127,7 @@ function List(props) {
             <small>Assigned to: {item.assignee}</small>
           </p>
           <p>
-            <small>Difficulty: {item.difficulty}</small>
+          <small>Difficulty: {item.difficulty} </small>
           </p>
           <div onClick={() => props.toggleComplete(item.id)}>
             Complete: {item.complete.toString()}
