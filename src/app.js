@@ -1,15 +1,13 @@
 import React from 'react';
-import ToDo from './components/todo/todo.js';
-import './styles.css';
-import SettingProvider from './context/setting';
-
+import SettingsContext from './context/setting.js';
+import ToDo from './components/todo';
 
 function App() {
   return (
-    <SettingProvider>
+    <SettingsContext>
       <ToDo />
-    </SettingProvider>
-  );
+    </SettingsContext>
+  )
 }
 
 export default App;

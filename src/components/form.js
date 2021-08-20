@@ -1,21 +1,42 @@
-
 import React, { useEffect, useState, useContext } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import useHook from '../hooks/formHooks.js';
+import { SettingsContext } from '../context/setting.js';
+
 function ToDoForm(props) {
+
+  const [handleSubmit, handleInputChange] = useHook(props.addItem);
+  const settingsContext = useContext(SettingsContext);
+
+  function todo(e) {
+    handleSubmit(e);
+    handleInputChange(e);
+  }
+
+
   return (
     <Card id="formCard">
       <h3>Add To Do Item</h3>
-      <Form onSubmit={props.handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <Form.Group id="formGroupMargin">
           <Form.Label>To Do Item:</Form.Label>
-          <Form.Control onChange={props.handleChange} name="text" type="text" placeholder="Item Details" />
+          <Form.Control
+            name="text"
+            placeholder="Add To Do List Item"
+            onChange={handleInputChange}
+          />
         </Form.Group>
         <Form.Group id="formGroupMargin">
           <Form.Label>Assigned To:</Form.Label>
-          <Form.Control onChange={props.handleChange} name="assignee" type="text" placeholder="Assignee Name" />
+          <Form.Control 
+            type="text" 
+            name="assignee" 
+            placeholder="Assigned To" 
+            onChange={handleInputChange} 
+          />
         </Form.Group>
         <Form.Group id="diffSlider">
           <Form.Label>Set Difficulty:</Form.Label>
@@ -25,7 +46,7 @@ function ToDoForm(props) {
             min="1" 
             max="5" 
             name="difficulty" 
-            onChange={props.handleInputChange} 
+            onChange={handleInputChange} 
             />
         </Form.Group>
         <Button id="formGroupMargin" type="submit">Add Item</Button>
@@ -33,5 +54,6 @@ function ToDoForm(props) {
     </Card>
   );
 }
-export default ToDoForm;
 
+
+export default ToDoForm;
