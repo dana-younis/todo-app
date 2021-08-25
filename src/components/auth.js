@@ -4,6 +4,7 @@ import { AuthContext } from '../context/auth';
 import { If, Else, Then } from 'react-if';
 
 import Signup from './Signup';
+import logIn from './login';
 
 
 
@@ -23,7 +24,7 @@ function Auth(props) {
         <Else>
           <dev>
           <Signup />
-
+<logIn/>
            
           </dev>
         </Else>

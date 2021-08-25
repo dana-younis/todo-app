@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
-import List from '../List';
-import '../todo.scss';
+import List from './Form';
+import './todo.scss';
 import {
   FormGroup,
   InputGroup,
@@ -12,7 +12,7 @@ import {
   Label,
 } from '@blueprintjs/core';
 
-import { ListContext } from '../../context/Settings';
+import { ListContext } from '../context/Settings';
 
 const ToDo = (props) => {
   const { handleSubmit, handleChange } = useContext(ListContext);

@@ -76,17 +76,17 @@ function Signup(props) {
           </FormGroup>
         </FormGroup>
 
-        <Button id="formGroupMargin" onClick={handleSubmit}>
+        <Button  onClick={handleSubmit}>
           Signup
         </Button>
 
-        {/* <Button
+        <Button
         intent="danger"
         onClick={logout}
        
       >
         Logout
-      </Button> */}
+      </Button>
       </card>
     </div>
   );

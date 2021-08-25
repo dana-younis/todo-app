@@ -43,19 +43,20 @@ function List(props) {
       deff = 'hard';
     } else if ((item.difficulty = 3)) {
       deff = 'medium';
+      
     } else {
       deff = 'easy';
     }
     return (
       <Card id="formCard">
-        <p>todo: {item.text}</p>
-        <p>Assigned to: {item.assignee}</p>
-        <p>difficulty : {deff}</p>
+        <h4>todo: {item.text}</h4>
+        <h4>Assigned to: {item.assignee}</h4>
+        <h4>difficulty : {deff}</h4>
 
         <Button onClick={() => toggleComplete(item)}>
           {item.complete ? 'complete' : 'incomplete'}
         </Button>
-        <Button onClick={() => deleteItem(item._id)}>Delete</Button>
+        <Button  id="badge-success "  onClick={() => deleteItem(item._id)}>Delete</Button>
       </Card>
     );
   });
@@ -74,18 +75,25 @@ function List(props) {
           <option value="3">3</option>
           <option value="4">4</option>
           <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+
         </select>
       </Label>
 
-      <button id="hideButton" onClick={displayComplete}>
-        inCompleted Tasks : Completed Tasks
+      <button  onClick={displayComplete}
+       id="hideButton"
+      >
+        Hide Completed Tasks
       </button>
-      <ul>{listOfTodos}</ul>
-
+      <ul >
+        {listOfTodos}
+      </ul>
       <Icon icon="double-chevron-left" onClick={() => next()}></Icon>
-      <Icon icon="double-chevron-right" onClick={() => previous()}></Icon>
-    </div>
-  );
+      <Icon icon='double-chevron-right' onClick={() => previous()}></Icon>
+    </div >
+  )
 }
 
 export default List;

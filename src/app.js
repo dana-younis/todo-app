@@ -1,5 +1,5 @@
 import React from 'react';
-import ToDo from './components/todo/todo';
+import ToDo from './components/todo';
 
 import AuthProvider from './context/auth';
 
