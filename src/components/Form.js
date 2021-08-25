@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Card, Button, Icon, Label } from '@blueprintjs/core';
 import { ListContext } from '../context/Settings';
-import Pagination from './pagination.js';
+
 function List(props) {
   const {
     list,
@@ -12,7 +12,7 @@ function List(props) {
     displayComplete,
     done,
     setDone,
-    a,
+    
   } = useContext(ListContext);
 
   const [startIndex, setStartIndex] = useState(0);

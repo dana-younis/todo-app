@@ -30,7 +30,7 @@ const ToDo = (props) => {
 
   return (
     <>
-     <Navbar bg="dark" variant="dark" id="navBlack">
+     <Navbar>
       <h3 >To Do List Manager ( {incomplete} )</h3>
       </Navbar>
 

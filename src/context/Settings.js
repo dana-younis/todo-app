@@ -34,7 +34,7 @@ function List(props) {
 
       setList(c);
     } else {
-      alert('you cant creat');
+      alert("you can't creat");
     }
   }
 
@@ -84,8 +84,10 @@ function List(props) {
       if (done === list)
         setDone(() => done.filter((item) => item.complete !== true));
       else setDone(list);
-  
-      done === list ? setA(`Show Completed Tasks`) : setA(`Hide Completed Tasks`);
+
+      done === list
+        ? setA(`Show Completed Tasks`)
+        : setA(`Hide Completed Tasks`);
     } else {
       alert("you can't update");
     }

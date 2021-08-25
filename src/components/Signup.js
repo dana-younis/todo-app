@@ -1,17 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../context/auth';
 import { FormGroup, InputGroup, Button, Card, Label } from '@blueprintjs/core';
-import './sign.css';
+
 function Signup(props) {
   const {
-    loggedIn,
-    setLoggedIn,
-    user,
-    setUser,
-    validateToken,
     logout,
-    login,
-    setLoginState,
     signup,
   } = useContext(AuthContext);
 
@@ -36,58 +29,62 @@ function Signup(props) {
   };
 
   return (
-    <div size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
-      <h1>Signup</h1>
+    <div class="container">
+      <div size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+        <h1>Signup</h1>
 
-      <card className="todo" >
-        <FormGroup >
-          <FormGroup >
-            <label class="form-control-label">Username</label>
-            <InputGroup
-              intent="danger"
-              onChange={handleChange}
-              name="username"
-              required
-              type="text"
-              placeholder="Enter username"
-            />
-          </FormGroup>
-          <FormGroup controlId="formBasicPassword" intent="danger">
-            <Label intent="danger" class="form-control-label">
-              Password
-            </Label>
-            <InputGroup
-              intent="danger"
-              onChange={handleChange}
-              name="password"
-              required
-              type="password"
-              placeholder="Password"
-            />
-          </FormGroup>
-
+        <card className="todo">
           <FormGroup>
-            <Label>Role</Label>
-            <select onChange={handleChange} name="role" as="select">
-              <option value="user">User</option>
-              <option value="admin">Admin</option>
-              <option value="editor">editor</option>
-            </select>
+            <FormGroup>
+              <label class="form-control-label">Username</label>
+              <InputGroup
+                intent="danger"
+                onChange={handleChange}
+                name="username"
+                required
+                type="text"
+                placeholder="Enter username"
+              />
+            </FormGroup>
+            <FormGroup controlId="formBasicPassword" intent="danger">
+              <Label intent="danger" class="form-control-label">
+                Password
+              </Label>
+              <InputGroup
+                intent="danger"
+                onChange={handleChange}
+                name="password"
+                required
+                type="password"
+                placeholder="Password"
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <Label>Role</Label>
+              <select onChange={handleChange} name="role" as="select">
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+                <option value="editor">editor</option>
+              </select>
+            </FormGroup>
           </FormGroup>
-        </FormGroup>
 
-        <Button  onClick={handleSubmit}>
-          Signup
-        </Button>
+          <Button onClick={handleSubmit}>Signup</Button>
 
-        <Button
-        intent="danger"
-        onClick={logout}
-       
-      >
-        Logout
-      </Button>
-      </card>
+          <Button intent="danger" onClick={logout}>
+            Logout
+          </Button>
+        </card>
+      </div>
+
+      <div class="drops">
+        <div class="drop drop-1"></div>
+        <div class="drop drop-2"></div>
+        <div class="drop drop-3"></div>
+        <div class="drop drop-4"></div>
+        <div class="drop drop-5"></div>
+      </div>
     </div>
   );
 }
