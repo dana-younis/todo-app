@@ -62,19 +62,17 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-
-
 form {
   background: $white;
   padding: 3em;
   height: 320px;
   border-radius: 20px;
   border-left: 1px solid $white;
- 
+
   backdrop-filter: blur(10px);
   box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
   text-align: center;
-  
+
   transition: all 0.2s ease-in-out;
 
   p {
@@ -82,7 +80,7 @@ form {
     color: #fff;
     opacity: 0.7;
     font-size: 1.4rem;
-  
+
     margin-bottom: 60px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   }
@@ -108,7 +106,7 @@ form {
     margin-bottom: 2em;
     border: none;
     border-left: 1px solid $white;
-  
+
     border-radius: 5000px;
     backdrop-filter: blur(5px);
     box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
@@ -132,7 +130,6 @@ form {
     }
 
     &[type='button'] {
-     
       width: 150px;
       font-size: 1rem;
 
@@ -163,11 +160,10 @@ form {
   backdrop-filter: blur(10px);
   border-radius: 10px;
   border-left: 1px solid $white;
- 
+
   box-shadow: 10px 10px 60px -8px rgba(0, 0, 0, 0.2);
   position: absolute;
   transition: all 0.2s ease;
-
 }
 
 a {
@@ -193,4 +189,65 @@ a:hover {
 
 .round {
   border-radius: 50%;
+}
+
+.container {
+  display: flex;
+
+  justify-content: center;
+}
+
+.loader {
+  max-width: 20rem;
+
+  stroke-linecap: round;
+  margin-left: 601px;
+}
+
+circle {
+  max-width: 20rem;
+
+  stroke-linecap: round;
+  fill: none;
+  stroke-width: 3.5;
+  animation-name: preloader;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  transform-origin: 170px 170px;
+  will-change: transform;
+
+  &:nth-of-type(1) {
+    stroke-dasharray: 550px;
+  }
+
+  &:nth-of-type(2) {
+    stroke-dasharray: 500px;
+  }
+
+  &:nth-of-type(3) {
+    stroke-dasharray: 450px;
+  }
+
+  &:nth-of-type(4) {
+    stroke-dasharray: 300px;
+  }
+
+  @for $i from 1 through 4 {
+    &:nth-of-type(#{$i}) {
+      animation-delay: -#{$i * 0.15}s;
+    }
+  }
+}
+
+@keyframes preloader {
+  50% {
+    transform: rotate(360deg);
+  }
+}
+
+
+.ss{
+
+  margin-top: -314px;
 }

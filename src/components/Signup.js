@@ -29,8 +29,21 @@ function Signup(props) {
   };
 
   return (
-    <div class="container">
-      <div size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+    <div >
+    <div >
+  
+  <svg class="loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340">
+     <circle cx="170" cy="170" r="160" stroke="#E2007C"/>
+     <circle cx="170" cy="170" r="135" stroke="#404041"/>
+     <circle cx="170" cy="170" r="110" stroke="#E2007C"/>
+     <circle cx="170" cy="170" r="85" stroke="#404041"/>
+     <circle cx="170" cy="170" r="75" stroke="#E2007C"/>
+     <circle cx="170" cy="170" r="60" stroke="#404041"/>
+     
+  </svg>
+  
+</div>
+      <div  className='ss'>
         <h1>Signup</h1>
 
         <card className="todo">
@@ -68,13 +81,13 @@ function Signup(props) {
                 <option value="editor">editor</option>
               </select>
             </FormGroup>
+          <Button onClick={handleSubmit}>Signup</Button>
           </FormGroup>
 
-          <Button onClick={handleSubmit}>Signup</Button>
 
-          <Button intent="danger" onClick={logout}>
-            Logout
-          </Button>
+          {/* <Button intent="danger" onClick={logout}>
+            logIN
+          </Button> */}
         </card>
       </div>
 

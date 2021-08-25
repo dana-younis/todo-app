@@ -4,7 +4,7 @@ import Login from './login';
 
 function Header() {
   return (
-    <header bg="primary" variant="dark">
+    <header >
       <Login />
       <h2
         style={{

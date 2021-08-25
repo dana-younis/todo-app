@@ -24,7 +24,7 @@ function Auth(props) {
         <Else>
           <dev>
           <Signup />
-<logIn/>
+{/* <logIn/> */}
            
           </dev>
         </Else>
