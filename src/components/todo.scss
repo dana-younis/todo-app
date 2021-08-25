@@ -1,0 +1,129 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding:0;
+    width: 100%;
+  }
+
+  
+  #footerText {
+    text-align: center;
+    padding: 1em;
+    background-color: rgb(233, 233, 233);
+  }
+  
+  #formCard {
+     margen:100px;
+    padding: 5em;
+    #diffSlider {
+      margin-top: 100px;
+    }
+  }
+  
+  #cardBody {
+    #diff {
+      font-size: 10px;
+      float: right;
+    }
+    #taskText {
+      margin-bottom: 0;
+      cursor:pointer;
+    }
+  }
+  
+  
+
+  
+  
+  .badge-danger {
+    background :red;
+    display: inline-block;
+    padding: .35em .65em;
+    font-size: .75em;
+    font-weight: 700;
+    line-height: 1;
+    color: white;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    cursor: pointer;
+  }
+  
+  .badge-success {
+    background:green;
+    display: inline-block;
+    padding: .35em .65em;
+    font-size: .75em;
+    font-weight: 700;
+    line-height: 1;
+    color: white;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    cursor: pointer;
+  }
+  
+  #settings {
+    display: flex;
+    margin-bottom: 15px;
+   
+    #sortDropDown {
+      margin-top: 6px;
+    }
+    #sortLabel {
+      margin-right: 15px;
+    }
+    #sortSelect {
+      width: 120px;
+    }
+  }
+  
+  #settingsBottom {
+    display: flex;
+    #selectPerPage {
+      margin-left: 50px;
+    }
+    #perPageSelect {
+      width: 70px;
+    }
+    #perPagelabel {
+      margin-right: 15px;
+      padding-top: 6px;
+    }
+    #totalDisplay {
+      margin-left: 15px;
+      padding-top: 6px;
+    }
+  }
+  
+
+  
+  .card {
+    margin-bottom: 30px;
+  }
+  
+  .todo {
+    display:flex;
+    flex-direction:row;
+    justify-content: flex-start;
+    margin: 2em;
+  
+    .mr-auto {
+      margin-right: 300px;
+      margin-left: 30px;
+    }
+  
+  
+    
+    #navBlack {
+      background: gray;
+      margin: 30px 30px 30px 30px;
+      padding-left: 10px;
+      border-radius: 3px;
+      color: white;
+    }
+    
+  
+  }
