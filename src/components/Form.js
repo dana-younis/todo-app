@@ -62,9 +62,9 @@ function List(props) {
   });
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '100px' }}>
+    <div style={{ textAlign: 'center' }}>
       <Label>
-        <label id="perPagelabel" htmlFor="perPage">
+        <label >
           Items Displayed Per Page:
         </label>
         <select
