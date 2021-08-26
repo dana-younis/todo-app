@@ -8,7 +8,7 @@ function List(props) {
   const [list, setList] = useState([]);
   const [values, setValues] = useState({});
   const [itemNumber, setItemNumber] = useState();
-  const [a, setA] = useState('on');
+  const [test1, setTest1] = useState('on');
   const [done, setDone] = useState([]);
   const { user } = useContext(AuthContext);
 
@@ -29,7 +29,7 @@ function List(props) {
         assignee: values.assignee,
       };
 
-      let a = await axios.post(API_TO, item);
+      let test1 = await axios.post(API_TO, item);
       let c = (await axios.get(API_TO)).data.results;
 
       setList(c);
@@ -86,8 +86,8 @@ function List(props) {
       else setDone(list);
 
       done === list
-        ? setA(`Show Completed Tasks`)
-        : setA(`Hide Completed Tasks`);
+        ? setTest1(`Show Completed Tasks`)
+        : setTest1(`Hide Completed Tasks`);
     } else {
       alert("you can't update");
     }
@@ -99,7 +99,7 @@ function List(props) {
       let l = {
         complete: item.complete,
       };
-      let a = await axios.put(`${API_TO}/${item._id}`, l);
+      let test1 = await axios.put(`${API_TO}/${item._id}`, l);
       let c = (await axios.get(API_TO)).data.results;
       setList(c);
     } else {
@@ -109,7 +109,7 @@ function List(props) {
 
   async function deleteItem(_id) {
     if (user.capabilities.includes('delete')) {
-      let a = await axios.delete(`${API_TO}/${_id}`);
+      let test1 = await axios.delete(`${API_TO}/${_id}`);
 
       let c = (await axios.get(API_TO)).data.results;
 
@@ -127,8 +127,8 @@ function List(props) {
         handleChange,
         toggleComplete,
         handlePaginationChange,
-        a,
-        setA,
+        test1,
+        setTest1,
         deleteItem,
         itemNumber,
         setItemNumber,

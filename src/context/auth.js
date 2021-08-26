@@ -17,7 +17,6 @@ function Auth(props) {
   };
 
   let login = async (username, password) => {
-    // headers{authorization: "Basic sdfsdfsdf="}
     try {
       const response = await superagent
         .post(`${API}/signin`)
