@@ -3,16 +3,11 @@ import { AuthContext } from '../context/auth';
 import { Card, Button, Icon, Label } from '@blueprintjs/core';
 import { If, Else, Then } from 'react-if';
 
-function Login(props) {
+function Login() {
   const {
     loggedIn,
-    setLoggedIn,
-    user,
-    setUser,
-    validateToken,
     logout,
     login,
-    setLoginState,
   } = useContext(AuthContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
