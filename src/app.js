@@ -1,13 +1,24 @@
 import React from 'react';
-import SettingsContext from './context/setting.js';
 import ToDo from './components/todo';
 
-function App() {
+import AuthProvider from './context/auth';
+
+import Auth from './components/auth';
+import ListContext from './context/Settings';
+import Header from './components/Header';
+
+function App(props) {
   return (
-    <SettingsContext>
-      <ToDo />
-    </SettingsContext>
-  )
+    <AuthProvider>
+      <Header />
+
+      <Auth capability="read">
+        <ListContext>
+          <ToDo />
+        </ListContext>
+      </Auth>
+    </AuthProvider>
+  );
 }
 
 export default App;

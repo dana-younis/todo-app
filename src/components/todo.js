@@ -1,75 +1,91 @@
-import React, { useEffect, useState } from 'react';
-import ToDoForm from './form.js';
-import ToDoList from './list.js';
-import Navbar from 'react-bootstrap/Navbar';
-import Card from 'react-bootstrap/Card';
-import useHook from '../hooks/formHooks.js';
+import React, { useContext, useEffect, useState } from 'react';
+
+import '@blueprintjs/core/lib/css/blueprint.css';
+import '@blueprintjs/icons/lib/css/blueprint-icons.css';
+import List from './Form';
 import './todo.scss';
+import {
+  FormGroup,
+  InputGroup,
+  Button,
+  Navbar,
+  Label,
+} from '@blueprintjs/core';
 
-import Header from './header'
+import { ListContext } from '../context/Settings';
 
+const ToDo = (props) => {
+  const { handleSubmit, handleChange } = useContext(ListContext);
 
-function ToDo() {
+  const [incomplete, setIncomplete] = useState([]);
+  const listObject = useContext(ListContext);
 
-  const [list, setList] = useState([]);
-
-  const addItem = (item) => {
-    item._id = Math.random();
-    item.complete = false;
-    setList([...list, item]);
-  };
-
-  const deleteItem = (id) => {
-    let item = list.filter(i => i._id === id)[0] || {};
-    if (item._id) {
-      let newList = list.filter(listItem => listItem._id !== id);
-      setList(newList);
-    }
-  }
-
-  const updateItem = (id, val) => {
-    let item = list.filter(i => i._id === id)[0] || {};
-
-    if (item._id) {
-      item.text = val;
-      let newList = list.map(listItem => listItem._id === item._id ? item : listItem);
-      setList(newList);
-    }
-  }
-
-  const toggleComplete = id => {
-    let item = list.filter(i => i._id === id)[0] || {};
-    if (item._id) {
-      item.complete = !item.complete;
-      let newList = list.map(listItem => listItem._id === item._id ? item : listItem);
-      setList(newList);
-    }
-  };
-
-
- 
   useEffect(() => {
-    if(list.length >= 1) (document.title = `${list.filter(item => !item.complete).length} Items To Complete`)
-  }, [list]);
+    let incompleteCount = listObject.list.filter(
+      (item) => !item.complete
+    ).length;
+    setIncomplete(incompleteCount);
+    document.title = `To Do List: ${incomplete}`;
+  }, [listObject.list, incomplete]);
 
   return (
     <>
-    <Header/>
-      <Navbar bg="dark" variant="dark" id="navBlack">
-        <Navbar.Brand>To Do List Manager ({list.filter(item => !item.complete).length})</Navbar.Brand>
+     <Navbar>
+      <h3 >To Do List Manager ( {incomplete} )</h3>
       </Navbar>
 
-      <Card className="todo">
-        <ToDoForm addItem={addItem} />
-        <ToDoList
-          list={list}
-          toggleComplete={toggleComplete}
-          deleteItem={deleteItem}
-          updateItem={updateItem}
-        />
-      </Card>
+      <card className="todo">
+        <FormGroup >
+       
+          <h3>Add To Do Item</h3>
+         
+          <Label>
+          To Do Item:
+            <InputGroup
+              onChange={handleChange}
+              name="text"
+              type="text"
+              placeholder="Add To Do List Item"
+              autoComplete="off"
+            />
+            
+          </Label>
+
+          <Label>
+            <span>Assigned To</span>
+            <InputGroup
+              onChange={handleChange}
+              name="assignee"
+              type="text"
+              placeholder="Assigned To"
+              autoComplete="off"
+            />
+          </Label>
+
+          <Label>
+            <span>Difficulty</span>
+            <input
+              id="diffSlider"
+              onChange={handleChange}
+              defaultValue={1}
+              type="range"
+              min={1}
+              max={5}
+              name="difficulty"
+            />
+          </Label>
+
+          <Label>
+            <Button id="formGroupMargin" type="click" onClick={handleSubmit}>
+              Add Item
+            </Button>
+          </Label>
+        </FormGroup>
+      </card>
+
+      <List />
     </>
   );
-}
+};
 
 export default ToDo;
